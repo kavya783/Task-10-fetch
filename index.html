@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Character encoding -->
+  <meta charset="UTF-8">
+
+  <!-- Responsive viewport for mobile devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Custom CSS file -->
+  <link href="./assets/css/style.css" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Page title -->
+  <title>CRUD Operations Using Fetch</title>
+</head>
+
+<body>
+
+<!-- Main page heading -->
+<h1 class="text-center pt-4">Crud Operations Using Fetch</h1>
+
+<!-- Main container -->
+<div class="container mt-4">
+
+  <!-- Title and Add Employee button -->
+  <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+    <h3 class="m-0">Employee List</h3>
+
+    <!-- Opens employee modal -->
+    <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#employeeModal">
+      Add Employee
+    </button>
+  </div>
+
+  <!-- Table visible only on medium+ screens -->
+  <div class="table-responsive d-none d-md-block">
+
+    <!-- Employee table -->
+    <table class="table table-bordered text-center align-middle">
+      <thead class="table-dark">
+        <tr>
+          <th>Profile</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <!-- Data filled dynamically -->
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+
+</div>
+
+<!-- Card layout for mobile screens -->
+<div class="d-md-none ps-3 ms-3 pe-3 me-3" id="cardContainer"></div>
+
+<!-- Container for view content -->
+<div id="viewCardContainer"></div>
+
+<!-- View Employee Modal -->
+<div class="modal fade" id="viewEmployeeModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-md modal-sm-down">
+    <div class="modal-content">
+
+      <!-- Modal header -->
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title">Employee</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Employee details inserted here -->
+      <div class="modal-body d-flex justify-content-center align-items-center p-2">
+        <div id="viewModalBody" class="w-100"></div>
+      </div>
+
+      <!-- Close button -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- Add / Edit Employee Modal -->
+<div class="modal fade" id="employeeModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-md">
+    <div class="modal-content">
+
+      <!-- Modal header -->
+      <div class="modal-header">
+        <h5 class="modal-title">Add Employee</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Form content -->
+      <div class="modal-body">
+
+        <!-- First Name input -->
+        <div class="mb-3">
+          <label class="form-label">First Name</label>
+          <input type="text" class="form-control" id="firstName">
+          <div id="firstnameerror" class="text-danger"></div>
+        </div>
+
+        <!-- Last Name input -->
+        <div class="mb-3">
+          <label class="form-label">Last Name</label>
+          <input type="text" class="form-control" id="lastName">
+          <div id="lastnameerror" class="text-danger"></div>
+        </div>
+
+        <!-- Email input -->
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-control" id="email">
+          <div id="emailerror" class="text-danger"></div>
+        </div>
+
+        <!-- Image upload -->
+        <div class="mb-3">
+          <label class="form-label">Upload Image</label>
+      <input type="file" class="form-control" id="image" accept="image/png/jpg,.png,.jpg">
+          <div id="imageerror" class="text-danger"></div>
+
+          <!-- Image preview -->
+          <img id="previewImage"
+               style="width:100px;display:none;margin-top:10px;border-radius:5px;">
+        </div>
+
+      </div>
+
+      <!-- Footer buttons -->
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+        <!-- Add or Update employee -->
+        <button class="btn btn-primary" id="addEmployeeBtn">
+          Add Employee
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <!-- Header -->
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title">Confirm Delete</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Message -->
+      <div class="modal-body">
+        Are you sure you want to delete this employee?
+      </div>
+
+      <!-- Actions -->
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom JavaScript -->
+<script src="./assets/javascript/script.js"></script>
+
+</body>
+</html>
