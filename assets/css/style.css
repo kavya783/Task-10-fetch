@@ -1,0 +1,40 @@
+ @media (max-width: 576px) {
+
+  .action-buttons,
+  .d-flex.justify-content-around
+   {
+    gap: 2px;  
+  }
+
+  .btn {
+    width: auto;       
+    padding: 3px 1px; 
+  }
+}
+
+#viewCardContainer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+    
+}
+
+.view-card {
+  width: 400px;
+
+  max-width: 100%;
+}
+@media(max-width:576px){
+ #viewCardContainer{
+    position: fixed;
+    top: 80%;
+    left: 60%;
+ }
+ 
+ 
+ .view-card {
+  width: 320px;
+  max-width: 90%;
+  }  
+}
